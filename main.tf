@@ -118,7 +118,7 @@ module "config" {
 
 module "download" {
   count   = (local.skip_download == true ? 0 : 1)
-  source  = "rancher/rke2-download/github"
+  source  = "github.com/nielsdraaisma-bmt/terraform-github-rke2-download"
   version = "v0.1.1"
   release = local.rke2_version
   path    = local.local_file_path
