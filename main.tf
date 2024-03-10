@@ -62,8 +62,7 @@ resource "null_resource" "write_extra_config" {
 }
 
 module "aws_access" {
-  source              = "rancher/access/aws"
-  version             = "v1.2.0"
+  source              = "github.com/nielsdraaisma-bmt/terraform-aws-access"
   owner               = local.owner
   vpc_name            = local.vpc_name
   vpc_cidr            = local.vpc_cidr
