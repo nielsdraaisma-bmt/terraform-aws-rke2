@@ -131,7 +131,7 @@ module "install" {
     module.config,
     module.download,
   ]
-  source              = "rancher/rke2-install/null"
+  source              = "github.com/nielsdraaisma-bmt/terraform-null-rke2-install"
   version             = "v1.0.2"
   release             = local.rke2_version
   rpm_channel         = local.rpm_channel
