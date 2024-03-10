@@ -81,7 +81,7 @@ module "aws_server" {
   depends_on = [
     module.aws_access
   ]
-  source              = "github.com/nielsdraaisma-bmt/terraform-aws-server?ref=v0.3.1"
+  source              = "github.com/nielsdraaisma-bmt/terraform-aws-server"
   name                = local.server_name
   owner               = local.owner
   type                = local.server_type # https://github.com/rancher/terraform-aws-server/blob/main/modules/server/types.tf
@@ -103,7 +103,7 @@ module "config" {
     module.aws_access,
     module.aws_server,
   ]
-  source            = "github.com/nielsdraaisma-bmt/terraform-local-rke2-config?ref=v0.1.3"
+  source            = "github.com/nielsdraaisma-bmt/terraform-local-rke2-config"
   token             = local.join_token
   server            = local.join_url # should not be added to the initial server
   advertise-address = module.aws_server.private_ip
@@ -116,7 +116,7 @@ module "config" {
 
 module "download" {
   count   = (local.skip_download == true ? 0 : 1)
-  source  = "github.com/nielsdraaisma-bmt/terraform-github-rke2-download?ref=v0.1.1"
+  source  = "github.com/nielsdraaisma-bmt/terraform-github-rke2-download"
   release = local.rke2_version
   path    = local.local_file_path
 }
@@ -128,7 +128,7 @@ module "install" {
     module.config,
     module.download,
   ]
-  source              = "github.com/nielsdraaisma-bmt/terraform-null-rke2-install?ref=v1.0.2"
+  source              = "github.com/nielsdraaisma-bmt/terraform-null-rke2-install"
   release             = local.rke2_version
   rpm_channel         = local.rpm_channel
   local_file_path     = local.local_file_path
