@@ -81,7 +81,7 @@ module "aws_server" {
   depends_on = [
     module.aws_access
   ]
-  source              = "rancher/server/aws"
+  source              = "github.com/nielsdraaisma-bmt/terraform-aws-server"
   version             = "v0.3.1"
   name                = local.server_name
   owner               = local.owner
