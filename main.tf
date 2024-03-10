@@ -104,7 +104,7 @@ module "config" {
     module.aws_access,
     module.aws_server,
   ]
-  source            = "rancher/rke2-config/local"
+  source            = "github.com/nielsdraaisma-bmt/terraform-local-rke2-config"
   version           = "v0.1.3"
   token             = local.join_token
   server            = local.join_url # should not be added to the initial server
